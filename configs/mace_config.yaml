@@ -1,0 +1,75 @@
+# MACE Training Configuration File
+# Reference: https://mace-docs.readthedocs.io/en/latest/guide/training.html#training-files
+
+# Model parameters
+model: "MACE"
+hidden_irreps: "128x0e + 128x1o"  # Hidden irreps for the model
+r_max: 5.0  # Cutoff radius for atomic interactions
+num_bessel: 8  # Number of Bessel functions
+num_polynomial_cutoff: 5  # Number of polynomial cutoff functions
+max_ell: 3  # Maximum angular momentum
+interaction_cls: "RealAgnosticResidualInteractionBlock"
+interaction_cls_first: "RealAgnosticResidualInteractionBlock"
+num_interactions: 2  # Number of interaction layers
+num_elements: 2  # Number of unique elements (adjust based on your system)
+correlation: 3  # Correlation order
+gate: "silu"  # Activation function
+
+# Training parameters
+train_file: "data/train.xyz"
+valid_file: "data/valid.xyz"
+model_dir: "models/"
+name: "mace_model"
+seed: 123
+overwrite: true
+
+# Data parameters
+r_max: 5.0
+valid_fraction: 0.1  # Fraction of data to use for validation
+test_fraction: 0.1   # Fraction of data to use for testing
+energy_key: "energy"
+forces_key: "forces"
+stress_key: "stress"
+virials_key: "virials"
+atomic_numbers: [1, 6, 7, 8]  # Atomic numbers in your dataset (adjust as needed)
+
+# Training hyperparameters
+max_num_epochs: 1000
+patience: 50
+eval_interval: 10
+keep_checkpoints: true
+restart_latest: false
+device: "cuda"  # Use GPU if available
+default_dtype: "float64"
+
+# Optimizer parameters
+optimizer: "adamw"
+batch_size: 10  # Adjust based on memory constraints
+valid_batch_size: 10
+lr: 0.01
+weight_decay: 5.0e-7
+amsgrad: true
+
+# Scheduler parameters
+lr_scheduler: "ReduceLROnPlateau"
+lr_factor: 0.8
+lr_patience: 25
+scheduler_patience: 25
+
+# Loss function parameters
+energy_weight: 1000.0
+forces_weight: 1.0
+stress_weight: 1.0
+virials_weight: 1.0
+
+# Reference energies (E0) - these should be calculated for your specific system
+# Current values are placeholder - calculate proper reference energies
+E0s: {1: -13.6, 6: -1029.0, 7: -1485.0, 8: -2042.0}  # H, C, N, O in eV
+
+# Data augmentation
+data_augmentation: false
+
+# Logging
+log_dir: "outputs/"
+wandb: false
+log_level: "INFO"

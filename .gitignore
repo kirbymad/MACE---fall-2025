@@ -1,0 +1,92 @@
+# MACE Project .gitignore
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv/
+.env/
+
+# Conda
+.conda/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# PyCharm
+.idea/
+
+# VS Code
+.vscode/
+
+# MACE specific
+models/
+outputs/
+*.model
+*.pkl
+*.h5
+*.hdf5
+
+# Data files (large files should be in Git LFS or external storage)
+data/*.xyz
+data/*.pkl
+data/*.h5
+data/*.hdf5
+data/ML_AB*
+data/energies*
+
+# Logs
+*.log
+*.out
+*.err
+
+# Temporary files
+*.tmp
+*.temp
+.DS_Store
+Thumbs.db
+
+# LAMMPS
+*.lammps
+*.lmp
+
+# VASP
+OUTCAR*
+POSCAR*
+CONTCAR*
+CHGCAR*
+WAVECAR*
+vasprun.xml
+IBZKPT
+EIGENVAL
+DOSCAR
+OSZICAR
+POTCAR*
+
+# Large datasets (use Git LFS for these)
+*.tar.gz
+*.zip
+*.7z
