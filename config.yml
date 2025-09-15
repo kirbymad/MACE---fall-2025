@@ -3,17 +3,17 @@ num_channels: 32
 max_L: 3
 r_max: 1.0
 name: "mace01"
-model_dir: "/home/melissasanseverino/maceML/MakeInput/MACE_models"
-log_dir: "/home/melissasanseverino/maceML/MakeInput/MACE_models"
-checkpoints_dir: "/home/melissasanseverino/maceML/MakeInput/MACE_models"
-results_dir: "/home/melissasanseverino/maceML/MakeInput/MACE_models"
-train_file: "/home/melissasanseverino/maceML/MakeInput/Y_BaZrO3_input_data_train.xyz"
+model_dir: "models"
+log_dir: "outputs"
+checkpoints_dir: "models"
+results_dir: "outputs"
+train_file: "data/Y_BaZrO3_input_data_train.xyz"
 valid_fraction: 0.10
-test_file: "/home/melissasanseverino/maceML/MakeInput/Y_BaZrO3_input_data_test.xyz"
+test_file: "data/Y_BaZrO3_input_data_test.xyz"
 E0s: "{1:-13.663181292231226, 8:-13.6172596, 39:-6.2184, 40:-6.6339964, 56:-5.2120556}"
 energy_key: "energy_xtb"
 forces_key: "forces_xtb"
-device: cuda
+device: cpu
 batch_size: 10
 max_num_epochs: 50
 swa: True
