@@ -1,6 +1,6 @@
 # MACE Project - Gomez Lab Fall 2025
 
-This repository contains the MACE (Machine learning Accelerated Computational Environment) project for the Gomez Lab.
+This repository contains the MACE (Machine learning Accelerated Computational Environment) project for the Gomez Lab, with contributions from Shirui and Melissa.
 
 ## Project Structure
 
@@ -11,8 +11,24 @@ MACE_Project/
 ├── data/              # Input data files (ML_AB, energies, xyz files)
 ├── models/            # Trained MACE models (gitignored)
 ├── outputs/           # Training outputs and logs (gitignored)
+├── ML_AB2             # ML_AB data file from Melissa
+├── MakeInputFile.py   # Data conversion script from Shirui
+├── train_model.py     # Training script
+├── eval.py            # Evaluation script
 └── README.md          # This file
 ```
+
+## Files from Shirui and Melissa
+
+✅ **Files already uploaded:**
+- `ML_AB2` - ML_AB data file from Melissa
+- `MakeInputFile.py` - Data conversion script from Shirui
+- `train_model.py` - Training script
+- `eval.py` - Evaluation script
+- `solvent_configs.xyz` - Example input data file
+- `config.yml` - Configuration file
+- `useful commands.docx` - Documentation
+- `mace_Shirui and Melissa.docx` - Project documentation
 
 ## Setup Instructions
 
@@ -25,32 +41,18 @@ bash scripts/setup_conda_env.sh
 ### 2. Data Preparation
 ```bash
 # Convert ML_AB and energy files to xyz format
-python scripts/MakeInputFile.py --ml_ab_file data/ML_AB_file --energy_file data/energies.txt --output data/training_data.xyz
+python MakeInputFile.py --ml_ab_file ML_AB2 --energy_file data/energies.txt --output data/training_data.xyz
 ```
 
 ### 3. Training
 ```bash
 # Train the MACE model
-bash scripts/train_mace.sh
+bash train_mace.sh
 ```
-
-## Files from Shirui and Melissa
-
-Please upload the following files to the appropriate directories:
-
-### From Shirui:
-- `MakeInputFile.py` (if different from the one in scripts/)
-- Any additional data processing scripts
-- Training configurations
-
-### From Melissa:
-- ML_AB files (place in `data/` directory)
-- Energy files extracted from OUTCAR files (place in `data/` directory)
-- Any additional data files
 
 ## Notes
 
-- Large data files should be uploaded to a cloud storage service or use Git LFS
+- Large data files are already in the repository
 - Model files and outputs are gitignored to keep the repository size manageable
 - Update the configuration files with your specific parameters (atomic numbers, E0 values, etc.)
 
