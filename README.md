@@ -46,7 +46,10 @@ python MakeInputFile.py --ml_ab_file ML_AB2 --energy_file data/energies.txt --ou
 
 ### 3. Training
 ```bash
-# Train the MACE model
+# Train the MACE model on Unity cluster
+sbatch scripts/train_mace_unity.sh
+
+# Or run locally (if you have GPU access)
 bash train_mace.sh
 ```
 
@@ -56,6 +59,13 @@ bash train_mace.sh
 - Model files and outputs are gitignored to keep the repository size manageable
 - Update the configuration files with your specific parameters (atomic numbers, E0 values, etc.)
 
+## Unity Cluster Specific Notes
+
+- Use `module load conda/latest` before activating conda environments
+- Check available GPU resources with `sinfo` and `squeue`
+- Submit jobs using SLURM: `sbatch your_script.sh`
+- Monitor GPU memory usage with `nvidia-smi`
+
 ## Memory Issues
 
 If you encounter memory issues during training:
@@ -63,3 +73,4 @@ If you encounter memory issues during training:
 2. Use gradient accumulation
 3. Consider using mixed precision training
 4. Monitor GPU memory usage with `nvidia-smi`
+5. Request appropriate memory allocation in SLURM job scripts
